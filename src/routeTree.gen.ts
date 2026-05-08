@@ -9,8 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TreatmentRouteImport } from './routes/treatment'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as PreventionRouteImport } from './routes/prevention'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AiDetectionRouteImport } from './routes/ai-detection'
+import { Route as AboutCancerRouteImport } from './routes/about-cancer'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TreatmentRoute = TreatmentRouteImport.update({
+  id: '/treatment',
+  path: '/treatment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreventionRoute = PreventionRouteImport.update({
+  id: '/prevention',
+  path: '/prevention',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiDetectionRoute = AiDetectionRouteImport.update({
+  id: '/ai-detection',
+  path: '/ai-detection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutCancerRoute = AboutCancerRouteImport.update({
+  id: '/about-cancer',
+  path: '/about-cancer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +61,130 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-cancer': typeof AboutCancerRoute
+  '/ai-detection': typeof AiDetectionRoute
+  '/dashboard': typeof DashboardRoute
+  '/login': typeof LoginRoute
+  '/prevention': typeof PreventionRoute
+  '/signup': typeof SignupRoute
+  '/treatment': typeof TreatmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-cancer': typeof AboutCancerRoute
+  '/ai-detection': typeof AiDetectionRoute
+  '/dashboard': typeof DashboardRoute
+  '/login': typeof LoginRoute
+  '/prevention': typeof PreventionRoute
+  '/signup': typeof SignupRoute
+  '/treatment': typeof TreatmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-cancer': typeof AboutCancerRoute
+  '/ai-detection': typeof AiDetectionRoute
+  '/dashboard': typeof DashboardRoute
+  '/login': typeof LoginRoute
+  '/prevention': typeof PreventionRoute
+  '/signup': typeof SignupRoute
+  '/treatment': typeof TreatmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about-cancer'
+    | '/ai-detection'
+    | '/dashboard'
+    | '/login'
+    | '/prevention'
+    | '/signup'
+    | '/treatment'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about-cancer'
+    | '/ai-detection'
+    | '/dashboard'
+    | '/login'
+    | '/prevention'
+    | '/signup'
+    | '/treatment'
+  id:
+    | '__root__'
+    | '/'
+    | '/about-cancer'
+    | '/ai-detection'
+    | '/dashboard'
+    | '/login'
+    | '/prevention'
+    | '/signup'
+    | '/treatment'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutCancerRoute: typeof AboutCancerRoute
+  AiDetectionRoute: typeof AiDetectionRoute
+  DashboardRoute: typeof DashboardRoute
+  LoginRoute: typeof LoginRoute
+  PreventionRoute: typeof PreventionRoute
+  SignupRoute: typeof SignupRoute
+  TreatmentRoute: typeof TreatmentRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/treatment': {
+      id: '/treatment'
+      path: '/treatment'
+      fullPath: '/treatment'
+      preLoaderRoute: typeof TreatmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prevention': {
+      id: '/prevention'
+      path: '/prevention'
+      fullPath: '/prevention'
+      preLoaderRoute: typeof PreventionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-detection': {
+      id: '/ai-detection'
+      path: '/ai-detection'
+      fullPath: '/ai-detection'
+      preLoaderRoute: typeof AiDetectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-cancer': {
+      id: '/about-cancer'
+      path: '/about-cancer'
+      fullPath: '/about-cancer'
+      preLoaderRoute: typeof AboutCancerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +197,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutCancerRoute: AboutCancerRoute,
+  AiDetectionRoute: AiDetectionRoute,
+  DashboardRoute: DashboardRoute,
+  LoginRoute: LoginRoute,
+  PreventionRoute: PreventionRoute,
+  SignupRoute: SignupRoute,
+  TreatmentRoute: TreatmentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
