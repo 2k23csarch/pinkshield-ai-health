@@ -108,12 +108,27 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { AuthProvider } from "@/lib/auth";
+import { ThemeProvider } from "@/lib/theme";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { FloatingBlobs } from "@/components/FloatingBlobs";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <ThemeProvider>
+        <AuthProvider>
+          <FloatingBlobs />
+          <Navbar />
+          <main className="min-h-screen">
+            <Outlet />
+          </main>
+          <Footer />
+        </AuthProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
