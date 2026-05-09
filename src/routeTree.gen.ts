@@ -16,7 +16,9 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedTreatmentRouteImport } from './routes/_authenticated/treatment'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedPreventionRouteImport } from './routes/_authenticated/prevention'
+import { Route as AuthenticatedDoctorsRouteImport } from './routes/_authenticated/doctors'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedAiDetectionRouteImport } from './routes/_authenticated/ai-detection'
 import { Route as AuthenticatedAboutCancerRouteImport } from './routes/_authenticated/about-cancer'
@@ -55,9 +57,19 @@ const AuthenticatedTreatmentRoute = AuthenticatedTreatmentRouteImport.update({
   path: '/treatment',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedPreventionRoute = AuthenticatedPreventionRouteImport.update({
   id: '/prevention',
   path: '/prevention',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedDoctorsRoute = AuthenticatedDoctorsRouteImport.update({
+  id: '/doctors',
+  path: '/doctors',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
@@ -87,7 +99,9 @@ export interface FileRoutesByFullPath {
   '/about-cancer': typeof AuthenticatedAboutCancerRoute
   '/ai-detection': typeof AuthenticatedAiDetectionRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/doctors': typeof AuthenticatedDoctorsRoute
   '/prevention': typeof AuthenticatedPreventionRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/treatment': typeof AuthenticatedTreatmentRoute
 }
 export interface FileRoutesByTo {
@@ -99,7 +113,9 @@ export interface FileRoutesByTo {
   '/about-cancer': typeof AuthenticatedAboutCancerRoute
   '/ai-detection': typeof AuthenticatedAiDetectionRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/doctors': typeof AuthenticatedDoctorsRoute
   '/prevention': typeof AuthenticatedPreventionRoute
+  '/profile': typeof AuthenticatedProfileRoute
   '/treatment': typeof AuthenticatedTreatmentRoute
 }
 export interface FileRoutesById {
@@ -113,7 +129,9 @@ export interface FileRoutesById {
   '/_authenticated/about-cancer': typeof AuthenticatedAboutCancerRoute
   '/_authenticated/ai-detection': typeof AuthenticatedAiDetectionRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/doctors': typeof AuthenticatedDoctorsRoute
   '/_authenticated/prevention': typeof AuthenticatedPreventionRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/treatment': typeof AuthenticatedTreatmentRoute
 }
 export interface FileRouteTypes {
@@ -127,7 +145,9 @@ export interface FileRouteTypes {
     | '/about-cancer'
     | '/ai-detection'
     | '/dashboard'
+    | '/doctors'
     | '/prevention'
+    | '/profile'
     | '/treatment'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -139,7 +159,9 @@ export interface FileRouteTypes {
     | '/about-cancer'
     | '/ai-detection'
     | '/dashboard'
+    | '/doctors'
     | '/prevention'
+    | '/profile'
     | '/treatment'
   id:
     | '__root__'
@@ -152,7 +174,9 @@ export interface FileRouteTypes {
     | '/_authenticated/about-cancer'
     | '/_authenticated/ai-detection'
     | '/_authenticated/dashboard'
+    | '/_authenticated/doctors'
     | '/_authenticated/prevention'
+    | '/_authenticated/profile'
     | '/_authenticated/treatment'
   fileRoutesById: FileRoutesById
 }
@@ -216,11 +240,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTreatmentRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/prevention': {
       id: '/_authenticated/prevention'
       path: '/prevention'
       fullPath: '/prevention'
       preLoaderRoute: typeof AuthenticatedPreventionRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/doctors': {
+      id: '/_authenticated/doctors'
+      path: '/doctors'
+      fullPath: '/doctors'
+      preLoaderRoute: typeof AuthenticatedDoctorsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/dashboard': {
@@ -251,7 +289,9 @@ interface AuthenticatedRouteChildren {
   AuthenticatedAboutCancerRoute: typeof AuthenticatedAboutCancerRoute
   AuthenticatedAiDetectionRoute: typeof AuthenticatedAiDetectionRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDoctorsRoute: typeof AuthenticatedDoctorsRoute
   AuthenticatedPreventionRoute: typeof AuthenticatedPreventionRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedTreatmentRoute: typeof AuthenticatedTreatmentRoute
 }
 
@@ -259,7 +299,9 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAboutCancerRoute: AuthenticatedAboutCancerRoute,
   AuthenticatedAiDetectionRoute: AuthenticatedAiDetectionRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDoctorsRoute: AuthenticatedDoctorsRoute,
   AuthenticatedPreventionRoute: AuthenticatedPreventionRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedTreatmentRoute: AuthenticatedTreatmentRoute,
 }
 
@@ -278,3 +320,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
