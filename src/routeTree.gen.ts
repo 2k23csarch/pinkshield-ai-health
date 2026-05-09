@@ -16,10 +16,22 @@ import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedTreatmentRouteImport } from './routes/_authenticated/treatment'
+import { Route as AuthenticatedSurvivorStoriesRouteImport } from './routes/_authenticated/survivor-stories'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
+import { Route as AuthenticatedResearchRouteImport } from './routes/_authenticated/research'
+import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedPreventionRouteImport } from './routes/_authenticated/prevention'
+import { Route as AuthenticatedLiveSupportRouteImport } from './routes/_authenticated/live-support'
+import { Route as AuthenticatedHealthTrackerRouteImport } from './routes/_authenticated/health-tracker'
+import { Route as AuthenticatedFaqRouteImport } from './routes/_authenticated/faq'
+import { Route as AuthenticatedEmergencyRouteImport } from './routes/_authenticated/emergency'
 import { Route as AuthenticatedDoctorsRouteImport } from './routes/_authenticated/doctors'
+import { Route as AuthenticatedDietRouteImport } from './routes/_authenticated/diet'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedCommunityRouteImport } from './routes/_authenticated/community'
+import { Route as AuthenticatedAwarenessRouteImport } from './routes/_authenticated/awareness'
+import { Route as AuthenticatedAppointmentsRouteImport } from './routes/_authenticated/appointments'
 import { Route as AuthenticatedAiDetectionRouteImport } from './routes/_authenticated/ai-detection'
 import { Route as AuthenticatedAboutCancerRouteImport } from './routes/_authenticated/about-cancer'
 
@@ -57,6 +69,27 @@ const AuthenticatedTreatmentRoute = AuthenticatedTreatmentRouteImport.update({
   path: '/treatment',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedSurvivorStoriesRoute =
+  AuthenticatedSurvivorStoriesRouteImport.update({
+    id: '/survivor-stories',
+    path: '/survivor-stories',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedResearchRoute = AuthenticatedResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedReportsRoute = AuthenticatedReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -67,9 +100,36 @@ const AuthenticatedPreventionRoute = AuthenticatedPreventionRouteImport.update({
   path: '/prevention',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedLiveSupportRoute =
+  AuthenticatedLiveSupportRouteImport.update({
+    id: '/live-support',
+    path: '/live-support',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedHealthTrackerRoute =
+  AuthenticatedHealthTrackerRouteImport.update({
+    id: '/health-tracker',
+    path: '/health-tracker',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedFaqRoute = AuthenticatedFaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedEmergencyRoute = AuthenticatedEmergencyRouteImport.update({
+  id: '/emergency',
+  path: '/emergency',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedDoctorsRoute = AuthenticatedDoctorsRouteImport.update({
   id: '/doctors',
   path: '/doctors',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedDietRoute = AuthenticatedDietRouteImport.update({
+  id: '/diet',
+  path: '/diet',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
@@ -77,6 +137,22 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedCommunityRoute = AuthenticatedCommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedAwarenessRoute = AuthenticatedAwarenessRouteImport.update({
+  id: '/awareness',
+  path: '/awareness',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedAppointmentsRoute =
+  AuthenticatedAppointmentsRouteImport.update({
+    id: '/appointments',
+    path: '/appointments',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const AuthenticatedAiDetectionRoute =
   AuthenticatedAiDetectionRouteImport.update({
     id: '/ai-detection',
@@ -98,10 +174,22 @@ export interface FileRoutesByFullPath {
   '/verify-otp': typeof VerifyOtpRoute
   '/about-cancer': typeof AuthenticatedAboutCancerRoute
   '/ai-detection': typeof AuthenticatedAiDetectionRoute
+  '/appointments': typeof AuthenticatedAppointmentsRoute
+  '/awareness': typeof AuthenticatedAwarenessRoute
+  '/community': typeof AuthenticatedCommunityRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/diet': typeof AuthenticatedDietRoute
   '/doctors': typeof AuthenticatedDoctorsRoute
+  '/emergency': typeof AuthenticatedEmergencyRoute
+  '/faq': typeof AuthenticatedFaqRoute
+  '/health-tracker': typeof AuthenticatedHealthTrackerRoute
+  '/live-support': typeof AuthenticatedLiveSupportRoute
   '/prevention': typeof AuthenticatedPreventionRoute
   '/profile': typeof AuthenticatedProfileRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/research': typeof AuthenticatedResearchRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/survivor-stories': typeof AuthenticatedSurvivorStoriesRoute
   '/treatment': typeof AuthenticatedTreatmentRoute
 }
 export interface FileRoutesByTo {
@@ -112,10 +200,22 @@ export interface FileRoutesByTo {
   '/verify-otp': typeof VerifyOtpRoute
   '/about-cancer': typeof AuthenticatedAboutCancerRoute
   '/ai-detection': typeof AuthenticatedAiDetectionRoute
+  '/appointments': typeof AuthenticatedAppointmentsRoute
+  '/awareness': typeof AuthenticatedAwarenessRoute
+  '/community': typeof AuthenticatedCommunityRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/diet': typeof AuthenticatedDietRoute
   '/doctors': typeof AuthenticatedDoctorsRoute
+  '/emergency': typeof AuthenticatedEmergencyRoute
+  '/faq': typeof AuthenticatedFaqRoute
+  '/health-tracker': typeof AuthenticatedHealthTrackerRoute
+  '/live-support': typeof AuthenticatedLiveSupportRoute
   '/prevention': typeof AuthenticatedPreventionRoute
   '/profile': typeof AuthenticatedProfileRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/research': typeof AuthenticatedResearchRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/survivor-stories': typeof AuthenticatedSurvivorStoriesRoute
   '/treatment': typeof AuthenticatedTreatmentRoute
 }
 export interface FileRoutesById {
@@ -128,10 +228,22 @@ export interface FileRoutesById {
   '/verify-otp': typeof VerifyOtpRoute
   '/_authenticated/about-cancer': typeof AuthenticatedAboutCancerRoute
   '/_authenticated/ai-detection': typeof AuthenticatedAiDetectionRoute
+  '/_authenticated/appointments': typeof AuthenticatedAppointmentsRoute
+  '/_authenticated/awareness': typeof AuthenticatedAwarenessRoute
+  '/_authenticated/community': typeof AuthenticatedCommunityRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/diet': typeof AuthenticatedDietRoute
   '/_authenticated/doctors': typeof AuthenticatedDoctorsRoute
+  '/_authenticated/emergency': typeof AuthenticatedEmergencyRoute
+  '/_authenticated/faq': typeof AuthenticatedFaqRoute
+  '/_authenticated/health-tracker': typeof AuthenticatedHealthTrackerRoute
+  '/_authenticated/live-support': typeof AuthenticatedLiveSupportRoute
   '/_authenticated/prevention': typeof AuthenticatedPreventionRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/reports': typeof AuthenticatedReportsRoute
+  '/_authenticated/research': typeof AuthenticatedResearchRoute
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/_authenticated/survivor-stories': typeof AuthenticatedSurvivorStoriesRoute
   '/_authenticated/treatment': typeof AuthenticatedTreatmentRoute
 }
 export interface FileRouteTypes {
@@ -144,10 +256,22 @@ export interface FileRouteTypes {
     | '/verify-otp'
     | '/about-cancer'
     | '/ai-detection'
+    | '/appointments'
+    | '/awareness'
+    | '/community'
     | '/dashboard'
+    | '/diet'
     | '/doctors'
+    | '/emergency'
+    | '/faq'
+    | '/health-tracker'
+    | '/live-support'
     | '/prevention'
     | '/profile'
+    | '/reports'
+    | '/research'
+    | '/settings'
+    | '/survivor-stories'
     | '/treatment'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -158,10 +282,22 @@ export interface FileRouteTypes {
     | '/verify-otp'
     | '/about-cancer'
     | '/ai-detection'
+    | '/appointments'
+    | '/awareness'
+    | '/community'
     | '/dashboard'
+    | '/diet'
     | '/doctors'
+    | '/emergency'
+    | '/faq'
+    | '/health-tracker'
+    | '/live-support'
     | '/prevention'
     | '/profile'
+    | '/reports'
+    | '/research'
+    | '/settings'
+    | '/survivor-stories'
     | '/treatment'
   id:
     | '__root__'
@@ -173,10 +309,22 @@ export interface FileRouteTypes {
     | '/verify-otp'
     | '/_authenticated/about-cancer'
     | '/_authenticated/ai-detection'
+    | '/_authenticated/appointments'
+    | '/_authenticated/awareness'
+    | '/_authenticated/community'
     | '/_authenticated/dashboard'
+    | '/_authenticated/diet'
     | '/_authenticated/doctors'
+    | '/_authenticated/emergency'
+    | '/_authenticated/faq'
+    | '/_authenticated/health-tracker'
+    | '/_authenticated/live-support'
     | '/_authenticated/prevention'
     | '/_authenticated/profile'
+    | '/_authenticated/reports'
+    | '/_authenticated/research'
+    | '/_authenticated/settings'
+    | '/_authenticated/survivor-stories'
     | '/_authenticated/treatment'
   fileRoutesById: FileRoutesById
 }
@@ -240,6 +388,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTreatmentRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/survivor-stories': {
+      id: '/_authenticated/survivor-stories'
+      path: '/survivor-stories'
+      fullPath: '/survivor-stories'
+      preLoaderRoute: typeof AuthenticatedSurvivorStoriesRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/research': {
+      id: '/_authenticated/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof AuthenticatedResearchRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/reports': {
+      id: '/_authenticated/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof AuthenticatedReportsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/profile': {
       id: '/_authenticated/profile'
       path: '/profile'
@@ -254,6 +430,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPreventionRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/live-support': {
+      id: '/_authenticated/live-support'
+      path: '/live-support'
+      fullPath: '/live-support'
+      preLoaderRoute: typeof AuthenticatedLiveSupportRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/health-tracker': {
+      id: '/_authenticated/health-tracker'
+      path: '/health-tracker'
+      fullPath: '/health-tracker'
+      preLoaderRoute: typeof AuthenticatedHealthTrackerRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/faq': {
+      id: '/_authenticated/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof AuthenticatedFaqRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/emergency': {
+      id: '/_authenticated/emergency'
+      path: '/emergency'
+      fullPath: '/emergency'
+      preLoaderRoute: typeof AuthenticatedEmergencyRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/doctors': {
       id: '/_authenticated/doctors'
       path: '/doctors'
@@ -261,11 +465,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDoctorsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/diet': {
+      id: '/_authenticated/diet'
+      path: '/diet'
+      fullPath: '/diet'
+      preLoaderRoute: typeof AuthenticatedDietRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/community': {
+      id: '/_authenticated/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof AuthenticatedCommunityRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/awareness': {
+      id: '/_authenticated/awareness'
+      path: '/awareness'
+      fullPath: '/awareness'
+      preLoaderRoute: typeof AuthenticatedAwarenessRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/appointments': {
+      id: '/_authenticated/appointments'
+      path: '/appointments'
+      fullPath: '/appointments'
+      preLoaderRoute: typeof AuthenticatedAppointmentsRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/ai-detection': {
@@ -288,20 +520,44 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteChildren {
   AuthenticatedAboutCancerRoute: typeof AuthenticatedAboutCancerRoute
   AuthenticatedAiDetectionRoute: typeof AuthenticatedAiDetectionRoute
+  AuthenticatedAppointmentsRoute: typeof AuthenticatedAppointmentsRoute
+  AuthenticatedAwarenessRoute: typeof AuthenticatedAwarenessRoute
+  AuthenticatedCommunityRoute: typeof AuthenticatedCommunityRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDietRoute: typeof AuthenticatedDietRoute
   AuthenticatedDoctorsRoute: typeof AuthenticatedDoctorsRoute
+  AuthenticatedEmergencyRoute: typeof AuthenticatedEmergencyRoute
+  AuthenticatedFaqRoute: typeof AuthenticatedFaqRoute
+  AuthenticatedHealthTrackerRoute: typeof AuthenticatedHealthTrackerRoute
+  AuthenticatedLiveSupportRoute: typeof AuthenticatedLiveSupportRoute
   AuthenticatedPreventionRoute: typeof AuthenticatedPreventionRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
+  AuthenticatedResearchRoute: typeof AuthenticatedResearchRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
+  AuthenticatedSurvivorStoriesRoute: typeof AuthenticatedSurvivorStoriesRoute
   AuthenticatedTreatmentRoute: typeof AuthenticatedTreatmentRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAboutCancerRoute: AuthenticatedAboutCancerRoute,
   AuthenticatedAiDetectionRoute: AuthenticatedAiDetectionRoute,
+  AuthenticatedAppointmentsRoute: AuthenticatedAppointmentsRoute,
+  AuthenticatedAwarenessRoute: AuthenticatedAwarenessRoute,
+  AuthenticatedCommunityRoute: AuthenticatedCommunityRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDietRoute: AuthenticatedDietRoute,
   AuthenticatedDoctorsRoute: AuthenticatedDoctorsRoute,
+  AuthenticatedEmergencyRoute: AuthenticatedEmergencyRoute,
+  AuthenticatedFaqRoute: AuthenticatedFaqRoute,
+  AuthenticatedHealthTrackerRoute: AuthenticatedHealthTrackerRoute,
+  AuthenticatedLiveSupportRoute: AuthenticatedLiveSupportRoute,
   AuthenticatedPreventionRoute: AuthenticatedPreventionRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedReportsRoute: AuthenticatedReportsRoute,
+  AuthenticatedResearchRoute: AuthenticatedResearchRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
+  AuthenticatedSurvivorStoriesRoute: AuthenticatedSurvivorStoriesRoute,
   AuthenticatedTreatmentRoute: AuthenticatedTreatmentRoute,
 }
 
