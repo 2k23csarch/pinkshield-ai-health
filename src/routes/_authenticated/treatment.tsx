@@ -6,7 +6,7 @@ import doc1 from "@/assets/doctor1.jpg";
 import doc2 from "@/assets/doctor2.jpg";
 import doc3 from "@/assets/doctor3.jpg";
 
-export const Route = createFileRoute("/treatment")({
+export const Route = createFileRoute("/_authenticated/treatment")({
   head: () => ({
     meta: [
       { title: "Treatment & Doctor Advice — PinkShield" },

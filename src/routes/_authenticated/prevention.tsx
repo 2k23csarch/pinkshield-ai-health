@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Apple, Leaf, Coffee, Beef, Cigarette, Wine, Cookie, Dumbbell, Brain, Calendar, Users, CheckCircle2, XCircle } from "lucide-react";
 import { Section, SectionHeader } from "@/components/Section";
 
-export const Route = createFileRoute("/prevention")({
+export const Route = createFileRoute("/_authenticated/prevention")({
   head: () => ({
     meta: [
       { title: "Prevention, Diet & Lifestyle — PinkShield" },
