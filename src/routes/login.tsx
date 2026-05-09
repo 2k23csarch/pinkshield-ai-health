@@ -69,7 +69,7 @@ function LoginPage() {
                 <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="accent-[var(--primary)]" />
                 <span className="text-muted-foreground">Remember me</span>
               </label>
-              <a href="#" className="text-primary hover:underline">Forgot password?</a>
+              <Link to="/forgot-password" className="text-primary hover:underline">Forgot password?</Link>
             </div>
 
             {error && <p className="text-sm text-destructive">{error}</p>}
