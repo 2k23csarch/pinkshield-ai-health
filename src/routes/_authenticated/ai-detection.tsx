@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Upload, Loader2, ScanLine, ShieldCheck, AlertTriangle, FileText, RotateCcw } from "lucide-react";
 import { Section, SectionHeader } from "@/components/Section";
 
-export const Route = createFileRoute("/ai-detection")({
+export const Route = createFileRoute("/_authenticated/ai-detection")({
   head: () => ({
     meta: [
       { title: "AI Detection Demo — PinkShield" },

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Microscope, AlertCircle, Activity, Eye, Droplet, Thermometer, ShieldAlert } from "lucide-react";
 import { Section, SectionHeader } from "@/components/Section";
 
-export const Route = createFileRoute("/about-cancer")({
+export const Route = createFileRoute("/_authenticated/about-cancer")({
   head: () => ({
     meta: [
       { title: "Understanding Breast Cancer — PinkShield" },

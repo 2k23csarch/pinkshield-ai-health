@@ -9,44 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TreatmentRouteImport } from './routes/treatment'
 import { Route as SignupRouteImport } from './routes/signup'
-import { Route as PreventionRouteImport } from './routes/prevention'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as AiDetectionRouteImport } from './routes/ai-detection'
-import { Route as AboutCancerRouteImport } from './routes/about-cancer'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedTreatmentRouteImport } from './routes/_authenticated/treatment'
+import { Route as AuthenticatedPreventionRouteImport } from './routes/_authenticated/prevention'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedAiDetectionRouteImport } from './routes/_authenticated/ai-detection'
+import { Route as AuthenticatedAboutCancerRouteImport } from './routes/_authenticated/about-cancer'
 
-const TreatmentRoute = TreatmentRouteImport.update({
-  id: '/treatment',
-  path: '/treatment',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PreventionRoute = PreventionRouteImport.update({
-  id: '/prevention',
-  path: '/prevention',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AiDetectionRoute = AiDetectionRouteImport.update({
-  id: '/ai-detection',
-  path: '/ai-detection',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutCancerRoute = AboutCancerRouteImport.update({
-  id: '/about-cancer',
-  path: '/about-cancer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedRoute = AuthenticatedRouteImport.update({
@@ -58,98 +38,109 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedTreatmentRoute = AuthenticatedTreatmentRouteImport.update({
+  id: '/treatment',
+  path: '/treatment',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedPreventionRoute = AuthenticatedPreventionRouteImport.update({
+  id: '/prevention',
+  path: '/prevention',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedAiDetectionRoute =
+  AuthenticatedAiDetectionRouteImport.update({
+    id: '/ai-detection',
+    path: '/ai-detection',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAboutCancerRoute =
+  AuthenticatedAboutCancerRouteImport.update({
+    id: '/about-cancer',
+    path: '/about-cancer',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about-cancer': typeof AboutCancerRoute
-  '/ai-detection': typeof AiDetectionRoute
   '/login': typeof LoginRoute
-  '/prevention': typeof PreventionRoute
   '/signup': typeof SignupRoute
-  '/treatment': typeof TreatmentRoute
+  '/about-cancer': typeof AuthenticatedAboutCancerRoute
+  '/ai-detection': typeof AuthenticatedAiDetectionRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/prevention': typeof AuthenticatedPreventionRoute
+  '/treatment': typeof AuthenticatedTreatmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about-cancer': typeof AboutCancerRoute
-  '/ai-detection': typeof AiDetectionRoute
   '/login': typeof LoginRoute
-  '/prevention': typeof PreventionRoute
   '/signup': typeof SignupRoute
-  '/treatment': typeof TreatmentRoute
+  '/about-cancer': typeof AuthenticatedAboutCancerRoute
+  '/ai-detection': typeof AuthenticatedAiDetectionRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/prevention': typeof AuthenticatedPreventionRoute
+  '/treatment': typeof AuthenticatedTreatmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteWithChildren
-  '/about-cancer': typeof AboutCancerRoute
-  '/ai-detection': typeof AiDetectionRoute
   '/login': typeof LoginRoute
-  '/prevention': typeof PreventionRoute
   '/signup': typeof SignupRoute
-  '/treatment': typeof TreatmentRoute
+  '/_authenticated/about-cancer': typeof AuthenticatedAboutCancerRoute
+  '/_authenticated/ai-detection': typeof AuthenticatedAiDetectionRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/prevention': typeof AuthenticatedPreventionRoute
+  '/_authenticated/treatment': typeof AuthenticatedTreatmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/login'
+    | '/signup'
     | '/about-cancer'
     | '/ai-detection'
-    | '/login'
-    | '/prevention'
-    | '/signup'
-    | '/treatment'
     | '/dashboard'
+    | '/prevention'
+    | '/treatment'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/login'
+    | '/signup'
     | '/about-cancer'
     | '/ai-detection'
-    | '/login'
-    | '/prevention'
-    | '/signup'
-    | '/treatment'
     | '/dashboard'
+    | '/prevention'
+    | '/treatment'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
-    | '/about-cancer'
-    | '/ai-detection'
     | '/login'
-    | '/prevention'
     | '/signup'
-    | '/treatment'
+    | '/_authenticated/about-cancer'
+    | '/_authenticated/ai-detection'
     | '/_authenticated/dashboard'
+    | '/_authenticated/prevention'
+    | '/_authenticated/treatment'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
-  AboutCancerRoute: typeof AboutCancerRoute
-  AiDetectionRoute: typeof AiDetectionRoute
   LoginRoute: typeof LoginRoute
-  PreventionRoute: typeof PreventionRoute
   SignupRoute: typeof SignupRoute
-  TreatmentRoute: typeof TreatmentRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/treatment': {
-      id: '/treatment'
-      path: '/treatment'
-      fullPath: '/treatment'
-      preLoaderRoute: typeof TreatmentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/signup': {
       id: '/signup'
       path: '/signup'
@@ -157,32 +148,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/prevention': {
-      id: '/prevention'
-      path: '/prevention'
-      fullPath: '/prevention'
-      preLoaderRoute: typeof PreventionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ai-detection': {
-      id: '/ai-detection'
-      path: '/ai-detection'
-      fullPath: '/ai-detection'
-      preLoaderRoute: typeof AiDetectionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about-cancer': {
-      id: '/about-cancer'
-      path: '/about-cancer'
-      fullPath: '/about-cancer'
-      preLoaderRoute: typeof AboutCancerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -199,6 +169,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/treatment': {
+      id: '/_authenticated/treatment'
+      path: '/treatment'
+      fullPath: '/treatment'
+      preLoaderRoute: typeof AuthenticatedTreatmentRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/prevention': {
+      id: '/_authenticated/prevention'
+      path: '/prevention'
+      fullPath: '/prevention'
+      preLoaderRoute: typeof AuthenticatedPreventionRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -206,15 +190,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/ai-detection': {
+      id: '/_authenticated/ai-detection'
+      path: '/ai-detection'
+      fullPath: '/ai-detection'
+      preLoaderRoute: typeof AuthenticatedAiDetectionRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/about-cancer': {
+      id: '/_authenticated/about-cancer'
+      path: '/about-cancer'
+      fullPath: '/about-cancer'
+      preLoaderRoute: typeof AuthenticatedAboutCancerRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
 
 interface AuthenticatedRouteChildren {
+  AuthenticatedAboutCancerRoute: typeof AuthenticatedAboutCancerRoute
+  AuthenticatedAiDetectionRoute: typeof AuthenticatedAiDetectionRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedPreventionRoute: typeof AuthenticatedPreventionRoute
+  AuthenticatedTreatmentRoute: typeof AuthenticatedTreatmentRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedAboutCancerRoute: AuthenticatedAboutCancerRoute,
+  AuthenticatedAiDetectionRoute: AuthenticatedAiDetectionRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedPreventionRoute: AuthenticatedPreventionRoute,
+  AuthenticatedTreatmentRoute: AuthenticatedTreatmentRoute,
 }
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
@@ -224,12 +230,8 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
-  AboutCancerRoute: AboutCancerRoute,
-  AiDetectionRoute: AiDetectionRoute,
   LoginRoute: LoginRoute,
-  PreventionRoute: PreventionRoute,
   SignupRoute: SignupRoute,
-  TreatmentRoute: TreatmentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
