@@ -1,6 +1,13 @@
 import doctor1 from "@/assets/doctor1.jpg";
 import doctor2 from "@/assets/doctor2.jpg";
 import doctor3 from "@/assets/doctor3.jpg";
+import survivor1 from "@/assets/survivor1.jpg";
+import survivor2 from "@/assets/survivor2.jpg";
+import survivor3 from "@/assets/survivor3.jpg";
+import survivor4 from "@/assets/survivor4.jpg";
+import survivor5 from "@/assets/survivor5.jpg";
+import survivor6 from "@/assets/survivor6.jpg";
+import survivor7 from "@/assets/survivor7.jpg";
 
 export type Doctor = {
   id: string;
@@ -40,12 +47,15 @@ export const THREADS: ForumThread[] = [
   { id: "t6", author: "Vikram S.", title: "Insurance navigation in India — a thread", excerpt: "Documenting my experience with claims, pre-authorization and second-opinion coverage. Tips welcome!", likes: 156, comments: 29, tag: "Resources" },
 ];
 
-export type Survivor = { name: string; age: number; years: number; quote: string; story: string };
+export type Survivor = { name: string; age: number; years: number; quote: string; story: string; image: string; location?: string; stage?: string };
 export const SURVIVORS: Survivor[] = [
-  { name: "Anita Rao", age: 47, years: 6, quote: "Early detection gave me my life back. Don't skip your screenings.", story: "Anita was diagnosed with Stage 1 breast cancer during a routine mammogram at age 41. After a lumpectomy and four months of radiation, she has been cancer-free for six years and now leads weekend awareness drives across Karnataka." },
-  { name: "Sunita Desai", age: 53, years: 4, quote: "Cancer changed my priorities — and surprisingly, made my life fuller.", story: "Sunita underwent a full mastectomy followed by chemotherapy. Her recovery was supported by her daughters and a survivor circle she still attends every Sunday. She now mentors newly diagnosed women in her community." },
-  { name: "Lata Krishnan", age: 61, years: 9, quote: "I tell every woman in my family: feel, look, talk. Don't be afraid.", story: "After feeling a lump during a self-exam, Lata insisted on a biopsy despite being told it was nothing. The early Stage 2 diagnosis allowed for a treatment plan that has kept her cancer-free for nearly a decade." },
-  { name: "Reena Joseph", age: 38, years: 2, quote: "Being young doesn't mean you're safe. Listen to your body.", story: "Reena was 36 when she was diagnosed with HER2-positive breast cancer. Targeted therapy and an incredible care team helped her return to full-time work and start a foundation for young survivors." },
+  { name: "Anita Rao", age: 47, years: 6, location: "Bengaluru, Karnataka", stage: "Stage 1 — IDC", image: survivor1, quote: "Early detection gave me my life back. Don't skip your screenings.", story: "Anita was diagnosed with Stage 1 invasive ductal carcinoma during a routine mammogram at age 41. After a lumpectomy and four months of radiation, she has been cancer-free for six years and now leads weekend awareness drives across Karnataka, helping over 4,000 women access free screening." },
+  { name: "Sunita Desai", age: 53, years: 4, location: "Pune, Maharashtra", stage: "Stage 2 — HR+", image: survivor2, quote: "Cancer changed my priorities — and surprisingly, made my life fuller.", story: "Sunita underwent a full mastectomy followed by six cycles of chemotherapy. Her recovery was supported by her daughters and a survivor circle she still attends every Sunday. She now mentors newly diagnosed women in her community and runs a hand-stitched pink-ribbon project that funds rural mammograms." },
+  { name: "Lata Krishnan", age: 61, years: 9, location: "Chennai, Tamil Nadu", stage: "Stage 2 — IDC", image: survivor3, quote: "I tell every woman in my family: feel, look, talk. Don't be afraid.", story: "After feeling a lump during a self-exam, Lata insisted on a biopsy despite being told it was nothing. The early Stage 2 diagnosis allowed for a treatment plan that has kept her cancer-free for nearly a decade. She now visits temples and women's collectives teaching the BSE technique in Tamil." },
+  { name: "Reena Joseph", age: 38, years: 2, location: "Kochi, Kerala", stage: "HER2+ early", image: survivor4, quote: "Being young doesn't mean you're safe. Listen to your body.", story: "Reena was 36 when she was diagnosed with HER2-positive breast cancer. Targeted therapy with trastuzumab and an incredible care team helped her return to full-time work and start the YoungPink Foundation, a peer-support network for women under 40." },
+  { name: "Fatima Khan", age: 44, years: 3, location: "Hyderabad, Telangana", stage: "Stage 2B — TNBC", image: survivor5, quote: "Chemo took my hair, not my hope. I wear my pink scarf with pride.", story: "Diagnosed with triple-negative breast cancer at 41, Fatima endured eight cycles of dose-dense chemotherapy and a partial mastectomy. Today she leads a women-only WhatsApp helpline answering more than 200 questions a week from newly diagnosed patients across South Asia." },
+  { name: "Geetha Nair", age: 56, years: 7, location: "Thiruvananthapuram, Kerala", stage: "Stage 1 — DCIS", image: survivor6, quote: "My granddaughter calls me her superhero. That's my favourite title.", story: "Geetha caught her ductal carcinoma in situ at the earliest stage thanks to a state-sponsored screening camp. After a successful lumpectomy and adjuvant hormone therapy, she now coordinates the very same camps that saved her life — they have screened 22,000 women to date." },
+  { name: "Aisha Banerjee", age: 29, years: 1, location: "Kolkata, West Bengal", stage: "Stage 2 — BRCA1+", image: survivor7, quote: "I'm 29 and a survivor. Genetics matter — get tested.", story: "Aisha discovered she carried a BRCA1 mutation after her mother's diagnosis. A preventive screening at 28 caught an early aggressive tumour. She underwent a bilateral mastectomy with reconstruction and now advocates for genetic counselling access among young Indian women." },
 ];
 
 export type Campaign = { id: string; title: string; date: string; location: string; description: string; image: string };
