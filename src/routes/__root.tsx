@@ -112,6 +112,7 @@ import { ThemeProvider } from "@/lib/theme";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingBlobs } from "@/components/FloatingBlobs";
+import { FloatingAIWidget } from "@/components/FloatingAIWidget";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
@@ -126,6 +127,7 @@ function RootComponent() {
             <Outlet />
           </main>
           <Footer />
+          <FloatingAIWidget />
         </AuthProvider>
       </ThemeProvider>
     </QueryClientProvider>
